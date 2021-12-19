@@ -12,12 +12,29 @@ import {
 import COLORS from "../consts/colors";
 import products from "../components/products";
 import Icon from "react-native-vector-icons/MaterialIcons";
+import { color } from "react-native-reanimated";
 const width = Dimensions.get("screen").width / 2 - 30;
 const HomeScreen = ({ navigation }) => {
   const categories = ["STREET WEAR", "HODIE", "PANTS", "SHORT"];
-
   const [categoryIndex, setCategoryIndex] = React.useState(0);
+  const tabs = ["Login", "SignUp"];
+  const [tabIndex, setTabIndex] = React.useState(0);
+  const TabList = () => {
+    return(
+      <View style={style.tabContainer}>
+         {tabs.map((item,index) =>
+         <TouchableOpacity
+          key={index}
+          activeOpacity={0.8}
+          onPress={() => navigation.navigate(`${item}`)}
+         >
+           <Text style={style.tabTextStyle}> {item} </Text>
+         </TouchableOpacity>
+         )}
+      </View>
 
+    )
+  }
   const CategoryList = () => {
     return (
       <View style={style.categoryContainer}>
@@ -103,10 +120,12 @@ const HomeScreen = ({ navigation }) => {
             Oliva Shop
           </Text>
         </View>
+        
         <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
             <Icon name="shopping-cart" size={28} />
         </TouchableOpacity>
       </View>
+      <TabList />
       <View style={{ marginTop: 30, flexDirection: "row" }}>
         <View style={style.searchContainer}>
           <Icon name="search" size={25} style={{ marginLeft: 20 }} />
@@ -155,6 +174,17 @@ const style = StyleSheet.create({
     marginTop: 30,
     marginBottom: 20,
     justifyContent: "space-between",
+  },
+  tabContainer: {
+    flexDirection: "row",
+    marginTop: 10,
+    justifyContent: "flex-start",
+  },
+  tabTextStyle: {
+    fontWeight: '700',
+    fontSize: 16,
+    textTransform: 'uppercase',
+    // color: COLORS.orange,
   },
   categoryText: {
     fontSize: 16,

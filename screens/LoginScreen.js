@@ -7,7 +7,7 @@ import  Feather  from 'react-native-vector-icons/Feather';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import COLORS from "../consts/colors";
 const NavigateToSignUp = props => {
   props.navigation.navigate('SignUp');
 }
@@ -59,7 +59,14 @@ const  Login = props =>  {
 
   return (
     <SafeAreaView>
-      <Text style={{ textAlign: 'center', fontSize: 20, marginBottom: 10}} > WELCOME TO LOGIN </Text>
+       <View>
+          <Text style={{ marginLeft: '32%', fontSize: 25, fontWeight: "bold" }}>Welcome to</Text>
+          <Text
+            style={{ marginLeft: '25%',fontSize: 38, fontWeight: "bold", color: COLORS.orange }}
+          >
+            Oliva Shop
+          </Text>
+        </View>
       <Text style={{marginLeft: 20, fontSize: 15}} >Username: </Text>
       <View style={{flexDirection:'row', flexWrap:'wrap', marginBottom: 20}}> 
         <FontAwesome
